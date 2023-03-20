@@ -1,22 +1,22 @@
-# asyncomplete-omni.vim
+# asyncomplete-user.vim
 
-Omni completion source for [asyncomplete.vim](https://github.com/prabirshrestha/asyncomplete.vim)
+A fork from [asyncomplete-omni.vim](https://github.com/yami-beta/asyncomplete-omni.vim) to support `completefunc` source for [asyncomplete.vim](https://github.com/prabirshrestha/asyncomplete.vim)
 
 ## Install
 
 ```vim
 Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'yami-beta/asyncomplete-omni.vim'
+Plug 'phongnh/asyncomplete-user.vim'
 ```
 
-## Register asyncomplete-omni.vim
+## Register asyncomplete-user.vim
 
 ```vim
-autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-\ 'name': 'omni',
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#user#get_source_options({
+\ 'name': 'user',
 \ 'allowlist': ['*'],
 \ 'blocklist': ['c', 'cpp', 'html'],
-\ 'completor': function('asyncomplete#sources#omni#completor'),
+\ 'completor': function('asyncomplete#sources#user#completor'),
 \ 'config': {
 \   'show_source_kind': 1,
 \ },
@@ -28,13 +28,3 @@ autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#s
 #### `show_source_kind`
 
 Add `o` kind label to `'menu'`
-
-## Note
-
-If `omnifunc` change cursor position, `asyncomplete-omni.vim` does not work correctly.
-
-For example, c, cpp, HTML are blacklisted above because Vim's default `omnifunc` repositions the cursor leading to quirky behaviour. You can reenable if you are using a more appropriate `omnifunc`.
-
-### Not work correctly
-
-- `rubycomplete#Complete`
